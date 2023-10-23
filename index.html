@@ -21,43 +21,43 @@
 
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
-	<style type="text/css">
-		 .popup {
-display:none;
-visibility: hidden;
-opacity: 0;
-position:absolute;
-margin:0;
+	<style>
+		/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
-  
-  .popup:target{
-display:block;
-visibility:visible;
-opacity:1;
-background-color:rgba(0,0,0,0.5);
-position:fixed!important;
-display:flex!important;
-top:0;left:0;
-right:0;
-bottom:0;
-margin:0;
-width:100%;
-height:100%;
-overflow-y:auto;
-padding:10px 0;
-z-index:99999999999;
--webkit-transition:.2s;
--moz-transition:.2s;
-transition:.2s
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
 }
-  
-  .popup {display:none;visibility: hidden;opacity: 0;position:absolute;margin:0;}
-.popup:target{display:block;visibility:visible;opacity:1;background-color:rgba(0,0,0,0.5);position:fixed!important;display:flex!important;top:0;left:0;right:0;bottom:0;margin:0;width:100%;height:100%;overflow-y:auto;padding:10px 0;z-index:99999999999;-webkit-transition:.2s;-moz-transition:.2s;transition:.2s}
-.opo-wrap{margin: auto}
-.opo{display:block;margin:auto;width:100%;max-width:100%;background:#fff;color:#333;padding:20px;overflow:auto;max-height:calc(100vh - 150px)}
-.close{background:#fff;color:#333;padding:10px;margin:auto;text-align:center;}
 
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
 
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
 	</style>
 
 </head> 
@@ -94,14 +94,43 @@ transition:.2s
 						        <a class="btn btn-primary w-100" href="#popup" target="_top">Lihat Detail</a>
 						    </div>
 					    </div><!--//cta-holder-->
-					    <div class="popup">
-					    <div class="opo-wrap">
-<div class="close"><a href="#tutup">Tutup Wae lah</a></div>
-<div class="opo">Opo iki
-Opo iki<br/>
-  </div>
-  </div>
-  </div>
+					    <div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+</div>
+
+<div id="London" class="tabcontent">
+  <h3>London</h3>
+  <p>London is the capital city of England.</p>
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+					    
 					    <div class="hero-quotes mt-5">
 						    <div id="quotes-carousel" class="quotes-carousel carousel slide carousel-fade mb-5" data-bs-ride="carousel" data-bs-interval="8000">
 								<div class="carousel-indicators">
